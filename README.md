@@ -66,6 +66,7 @@ Since writing tests comes with opinions and time overhead, many companies, espec
 
 Another philosphy that preaches not implenting tests is "build nets, not guard rails." The idea is that code should follow a certain standard where it's acceptable to fail. Instead of using opinionation that can make a codebase rigid and hard to iterate with, you should use specific standards that tries to prevent bugs that unit tests could catch. For example, Typescript making sure a functions inputs and outputs are valid. 
 
+The last argument against testing on the frontend is the nature of the javascript ech system itself. While most frameworks and libraries seem to be going towards longterm stability and support, it wasn't always like that. The life cycle of a javascript app for many smaller companies might be that they're writing the app to be rewritten later on. In this case, the overhead of writing tests might not be worth it.
 
 **Disclaimer** 
 
