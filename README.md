@@ -60,6 +60,12 @@ You will get software testing evangalists on one side saying "always!" and on th
 
 It's fair to say that the more test coverage the more opinionated a codebase becomes. As stated above, there's reasons you might want more opinionation and more flexability. The same thing can be said about adding in tests. For ease we'll discuss three code coverage scenarios: No testing/No code coverage, some code coverage, high code coverage:
 
+#### No Coverage/No Tests
+
+Since writing tests comes with opinions and time overhead, many companies, especially smaller ones like startups, choose not to write frontend tests. The primary reason is a need for flexibility and code velocity. For startups, the goal is to roll out features as quickly as possible to users. Writing tests can not only consume time but may also impede product development in a highly competitive market. Additionally, writing tests requires more developer time, translating to increased costs for the company. This trade-off between speed and testing is a common consideration in resource-constrained environments.
+
+Another philosphy that preaches not implenting tests is "build nets, not guard rails." The idea is that code should follow a certain standard where it's acceptable to fail. Instead of using opinionation that can make a codebase rigid and hard to iterate with, you should use specific standards that tries to prevent bugs that unit tests could catch. For example, Typescript making sure a functions inputs and outputs are valid. 
+
 
 **Disclaimer** 
 
