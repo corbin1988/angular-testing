@@ -12,8 +12,6 @@ Thorough testing ensures that software meets the specified requirements and adhe
 Writing testable code encourages developers to follow best practices, resulting in cleaner, modular, and maintainable code. This contributes to better overall code quality and reduces technical debt.
 ### Increased Confidence in Code Changes:
 Continuous testing provides developers with confidence when making changes or adding new features. Knowing that existing functionality is safeguarded by tests allows for more agile development and iteration.
-### Cost-Effectiveness:
-Identifying and fixing defects early in the development process is more cost-effective than addressing issues in production. The cost of fixing a bug increases significantly as the software progresses through development stages.
 ### Supports Continuous Integration and Deployment:
 Testing is a cornerstone of continuous integration and continuous deployment (CI/CD) pipelines. Automated tests ensure that code changes do not introduce regressions, enabling a smoother and faster release process.
 ### Documentation and Understanding:
@@ -21,6 +19,38 @@ Tests serve as a form of documentation, providing insights into the expected beh
 
 ## Testing Philosophy
 
-One of the reasons software testing is so hard to learn is because 
+One of the reasons software testing is so difficult is because the multitude of approaches. Different companies, programming languages, frameworks, and individuals hold varying opinions on how software should be tested. In this section we’ll speak about three things: code coverage, opinionation, and why companied have different levels of testing. 
+
+### Code Coverage
+
+Code coverage in essence is how much of the code base is tested. 
+
+### Software Opinionation
+
+Software opinionation refers to a design or architectural approach that includes strong, often predefined, opinions about how the software should be structured, organized, and implemented. Opinionated software typically enforces a specific set of conventions, best practices, or design patterns, guiding developers in making certain decisions.
+
+Conversely, unopinionated or flexible software allows developers more freedom and choices in how they structure and implement their code. It provides a framework or toolset without imposing strict rules or preferences.
+
+### Opinionated Software
+
+#### Pros:
+Clear guidelines and conventions lead to consistent code.
+Faster development due to reduced decision-making.
+Can be beneficial for teams where consistency is crucial.
+#### Cons:
+Less flexibility for developers who prefer alternative approaches.
+May not fit well with specific project requirements or constraints.
+Unopinionated Software:
+
+#### Pros:
+Offers flexibility, allowing developers to choose their preferred structures.
+Adaptable to diverse project requirements.
+Appeals to developers who value creative freedom.
+#### Cons:
+May lead to inconsistencies in code style and structure.
+Increased decision-making can slow down development for some teams.
+An example of opinionation in software development is the choice of a web framework. Some frameworks, like Ruby on Rails, are opinionated and come with a set of conventions and best practices that developers are encouraged to follow. On the other hand, frameworks like Express.js for Node.js are unopinionated, providing more flexibility and leaving many decisions to the developers.
+
+Ultimately, whether a software project is opinionated or unopinionated depends on the specific goals, preferences, and requirements of the developers and the project itself.
 
 ## Types of Tests
