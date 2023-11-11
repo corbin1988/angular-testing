@@ -31,22 +31,23 @@ Software opinionation refers to a design or architectural approach that includes
 
 Conversely, unopinionated or flexible software allows developers more freedom and choices in how they structure and implement their code. It provides a framework or toolset without imposing strict rules or preferences.
 
-### Opinionated Software
+#### Opinionated Software
 
-#### Pros:
+##### Pros:
 Clear guidelines and conventions lead to consistent code.
 Faster development due to reduced decision-making.
 Can be beneficial for teams where consistency is crucial.
-#### Cons:
+##### Cons:
 Less flexibility for developers who prefer alternative approaches.
 May not fit well with specific project requirements or constraints.
-Unopinionated Software:
 
-#### Pros:
+#### Unopinionated Software:
+
+##### Pros:
 Offers flexibility, allowing developers to choose their preferred structures.
 Adaptable to diverse project requirements.
 Appeals to developers who value creative freedom.
-#### Cons:
+##### Cons:
 May lead to inconsistencies in code style and structure.
 Increased decision-making can slow down development for some teams.
 An example of opinionation in software development is the choice of a web framework. Some frameworks, like Ruby on Rails, are opinionated and come with a set of conventions and best practices that developers are encouraged to follow. On the other hand, frameworks like Express.js for Node.js are unopinionated, providing more flexibility and leaving many decisions to the developers.
