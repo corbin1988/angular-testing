@@ -54,4 +54,15 @@ An example of opinionation in software development is the choice of a web framew
 
 Ultimately, whether a software project is opinionated or unopinionated depends on the specific goals, preferences, and requirements of the developers and the project itself.
 
+### How much to test?
+
+You will get software testing evangalists on one side saying "always!" and on the other side saying "never!" When it comes to testing coverage you'll also get evaganlists that preach "you should aim as close to 100% code coverage as you can!" So what's the truth? The answer, as always in software development, is it depends. 
+
+It's fair to say that the more test coverage the more opinionated a codebase becomes. As stated above, there's reasons you might want more opinionation and more flexability. The same thing can be said about adding in tests. For ease we'll discuss three code coverage scenarios: No testing/No code coverage, some code coverage, high code coverage:
+
+
+**Disclaimer** 
+
+The amount of software testing that can be introduced into codebase can also be based on person prefrence of a developer or team with no rhyme or reason to their decisions other than they like testing or hate it. 
+
 ## Types of Tests
