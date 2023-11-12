@@ -76,7 +76,7 @@ In the [introduction](#introduction) we provided examples as to why you should t
   - Medical devices
   - Safety Equipment
 - Financial transactions
-- Anything that poses a mager security risk (personal data, secrets, sensitive data in general)
+- Anything that poses a major security risk (personal data, secrets, sensitive data in general)
 - Devices or software that is only purchased once, isn't frequently updated, and needs to run reliably:
   - Hardware devices that don't connect to the internet
   - Games that aren't connected to the internet
