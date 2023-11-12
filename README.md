@@ -77,9 +77,19 @@ In the [introduction](#introduction) we provided examples as to why you should t
   - Safety Equipment
 - Financial transactions
 - Anything that poses a mager security risk (personal data, secrets, sensitive data in general)
+- Devices or software that is only purchased once, isn't frequently updated, and needs to run reliably:
+  - Hardware devices that don't connect to the internet
+  - Games that aren't connected to the internet
 
 Anything where the margin for error needs to be low and the consequences of a bug in the code could cause something catastrophic to happen should have high test coverage.
 
+#### Some Code Coverage
+
+Maintaining a test coverage range of 40% to 70% offers a balanced approach that combines flexibility with the assurance of testing. Striking this middle ground accommodates scenarios where the need for adaptability in building new features coexists with the necessity of rigorous testing, particularly in critical areas like security and databases.
+
+In software development, the requirement for untested flexibility arises when innovating and introducing new features. This level of code coverage acknowledges that not every aspect of the codebase demands immediate testing. Instead, it reserves the freedom to explore creative solutions and iterate rapidly, essential in environments where agility is paramount.
+
+Simultaneously, the prescribed coverage range ensures a baseline of testing, especially in realms crucial to the system's integrity. Security considerations and interactions with databases, where data accuracy and reliability are paramount, benefit from a more comprehensive testing approach. Striking a balance in code coverage acknowledges the dual needs of development—innovation and reliability—creating a pragmatic framework for effective software testing.
 
 **Disclaimer** 
 
