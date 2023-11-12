@@ -19,7 +19,7 @@ Tests serve as a form of documentation, providing insights into the expected beh
 
 ## Testing Philosophy
 
-One of the reasons software testing is so difficult is because the multitude of approaches. Different companies, programming languages, frameworks, and individuals hold varying opinions on how software should be tested. In this section we’ll speak about three things: code coverage, opinionation, and why companied have different levels of testing. 
+One of the reasons software testing is so difficult is because the multitude of approaches. Different companies, programming languages, frameworks, and individuals hold varying opinions on how software should be tested. In this section we’ll speak about three things: code coverage, opinionation, why companies have different levels of testing, and testing methodology/workflow. 
 
 ### Code Coverage
 
@@ -90,6 +90,8 @@ Maintaining a test coverage range of 40% to 70% offers a balanced approach that 
 In software development, the requirement for untested flexibility arises when innovating and introducing new features. This level of code coverage acknowledges that not every aspect of the codebase demands immediate testing. Instead, it reserves the freedom to explore creative solutions and iterate rapidly, essential in environments where agility is paramount.
 
 Simultaneously, the prescribed coverage range ensures a baseline of testing, especially in realms crucial to the system's integrity. Security considerations and interactions with databases, where data accuracy and reliability are paramount, benefit from a more comprehensive testing approach. Striking a balance in code coverage acknowledges the dual needs of development—innovation and reliability—creating a pragmatic framework for effective software testing.
+
+### Testing Methodology/Workflow
 
 **Disclaimer** 
 
