@@ -68,6 +68,19 @@ Another philosphy that preaches not implenting tests is "build nets, not guard r
 
 The last argument against testing on the frontend is the nature of the javascript ech system itself. While most frameworks and libraries seem to be going towards longterm stability and support, it wasn't always like that. The life cycle of a javascript app for many smaller companies might be that they're writing the app to be rewritten later on. In this case, the overhead of writing tests might not be worth it.
 
+#### High code coverage
+
+In the [introduction](#introduction) we provided examples as to why you should test. A good rule of thumb for why companies, teams, or individuals would choose to implement high test coverage are when the stakes for product failure are high to the user. For example the following applications:
+
+- Anything based around safety that could mean life or death:
+  - Medical devices
+  - Safety Equipment
+- Financial transactions
+- Anything that poses a mager security risk (personal data, secrets, sensitive data in general)
+
+Anything where the margin for error needs to be low and the consequences of a bug in the code could cause something catastrophic to happen should have high test coverage.
+
+
 **Disclaimer** 
 
 The amount of software testing that can be introduced into codebase can also be based on person prefrence of a developer or team with no rhyme or reason to their decisions other than they like testing or hate it. 
