@@ -365,7 +365,7 @@ it('should add two numbers', () => {
 
 The Execution Phase involves the actual execution of the functionality being tested. Here, we call the add method on the calculatorService instance with the numbers 5 and 3. This phase is where we trigger the specific behavior we want to test.
 
-```
+```TS
 it('should add two numbers', () => {
     const calculatorService = new CalculatorService(new LoggerService());
     //Execution
