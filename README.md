@@ -145,3 +145,47 @@ Post-Development Testing or Post-Implementation Testing is when tests are create
 The amount of software testing that can be introduced into codebase can also be based on person prefrence of a developer or team with no rhyme or reason to their decisions other than they like testing or hate it. 
 
 ## Types of Tests
+
+Testing in Angular applications involves various types of tests that serve different purposes in ensuring the reliability and functionality of the software. These tests can be broadly categorized into three main types: Unit Testing, Integration Testing, and End-to-End (E2E) Testing.
+
+### Unit Testing:
+
+#### Purpose
+
+Focuses on testing individual units or components of the application in isolation.
+
+#### Scope 
+
+Tests the smallest parts of the code, such as functions or methods, to ensure they work as expected.
+
+####Advantages 
+
+Helps identify and fix bugs at an early stage, promotes modular and maintainable code.
+
+### Integration Testing:
+
+#### Purpose: 
+
+Verifies that different units or components work together as expected when integrated.
+
+#### Scope: 
+
+Tests interactions between multiple units to ensure the seamless collaboration of integrated parts.
+
+#### Advantages: 
+
+Detects issues arising from the combination of units, ensuring the overall system functions correctly.
+
+#### End-to-End (E2E) Testing:
+
+#### Purpose: 
+
+Evaluates the entire application workflow, simulating real user scenarios.
+
+#### Scope: 
+
+Tests the application as a whole, including its user interface, to ensure all components work together in a real-world setting.
+
+### Advantages: 
+
+Provides a comprehensive view of the application's behavior, helping catch issues related to the entire user journey.
