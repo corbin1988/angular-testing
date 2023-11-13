@@ -186,6 +186,6 @@ Evaluates the entire application workflow, simulating real user scenarios.
 
 Tests the application as a whole, including its user interface, to ensure all components work together in a real-world setting.
 
-### Advantages: 
+#### Advantages: 
 
 Provides a comprehensive view of the application's behavior, helping catch issues related to the entire user journey.
