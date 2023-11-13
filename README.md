@@ -1,5 +1,38 @@
 # Angular Testing
 
+## Table of Contents
+
+
+
+- [Introduction](#introduction)
+  - [Bug Detection and Prevention](#bug-detection-and-prevention)
+  - [Enhances Software Quality](#enhances-software-quality)
+  - [Improved Code Quality](#improved-code-quality)
+  - [Increased Confidence in Code Changes](#increased-confidence-in-code-changes)
+  - [Supports Continuous Integration and Deployment](#supports-continuous-integration-and-deployment)
+  - [Documentation and Understanding](#documentation-and-understanding)
+
+- [Testing Philosophy](#testing-philosophy)
+  - [Code Coverage](#code-coverage)
+  - [Software Opinionation](#software-opinionation)
+    - [Opinionated Software](#opinionated-software)
+      - [Pros](#pros)
+      - [Cons](#cons)
+    - [Unopinionated Software](#unopinionated-software)
+      - [Pros](#pros-1)
+      - [Cons](#cons-1)
+  - [How much to test?](#how-much-to-test)
+    - [No Coverage/No Tests](#no-coverageno-tests)
+    - [High code coverage](#high-code-coverage)
+    - [Some Code Coverage](#some-code-coverage)
+
+- [Testing Methodology/Workflow](#testing-methodologyworkflow)
+  - [Writing Tests Before Code Implementation With TDD](#writing-tests-before-code-implementation-with-tdd)
+  - [Writing Tests While Implementing Code With BDD](#writing-tests-while-implementing-code-with-bdd)
+  - [Writing Tests After Code Has Been Written With Post-Development Testing or Post-Implementation Testing](#writing-tests-after-code-has-been-written-with-post-development-testing-or-post-implementation-testing)
+
+- [Types of Tests](#types-of-tests)
+
 ## Introduction
 
 Software testing is the process of assessing the functionality of a software program. The process checks for errors and gaps and whether the outcome of the application matches desired expectations before the software is installed and goes live. The main things software testing hopes to accomplish are:
