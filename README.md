@@ -235,6 +235,8 @@ Karma has a plugin system that allows you to extend its functionality. You can a
 
 ### First Test
 
+In this test we will be using a simple logger and calculator service that adds and subtracts numbers. In the `add` and `subtract` method the logger logs the function that is being called.
+
 **logger.service.ts**
 
 ```TS
@@ -298,5 +300,38 @@ describe('CalculatorService', () => {
   });
 });
 ```
+#### The Anatomy of Our First Test
 
+In Jasmine, describe and it are functions used for structuring and organizing test suites.
 
+##### describe:
+
+**Purpose:** It is used to group related test specs (individual test cases) together, creating a test suite.
+
+**Syntax:** `describe(description: string, specDefinitions: () => void): void`
+
+**Example:***
+
+```TS
+describe('CalculatorService', () => {
+  // Test specs go here
+});
+```
+
+Note: Nesting describe blocks is common to further organize tests.
+
+#### it:
+
+**Purpose:** It represents an individual test case or specification within a test suite. Each it block should focus on a specific behavior or scenario.
+
+**Syntax:** `it(expectation: string, assertion: () => void): void`
+
+**Example:**
+
+```TS
+it('should add two numbers', () => {
+  // Test assertions go here
+});
+```
+
+Note: It's good practice to have a single expectation per it block to keep tests focused and easy to understand.
