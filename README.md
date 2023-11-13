@@ -233,3 +233,70 @@ Karma provides a dashboard that displays the results of your tests in real-time.
 
 Karma has a plugin system that allows you to extend its functionality. You can add plugins for code coverage reporting, additional testing frameworks, or other features.
 
+### First Test
+
+**logger.service.ts**
+
+```TS
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class LoggerService {
+  // Method to log messages to the console
+  log(message: string): void {
+    console.log(message);
+  }
+}
+```
+
+**calculator.service.ts**
+
+```TS
+import { Injectable } from '@angular/core';
+import { LoggerService } from './logger.service';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CalculatorService {
+  // Inject the LoggerService in the constructor
+  constructor(private logger: LoggerService) {}
+
+  // Method to add two numbers
+  add(num1: number, num2: number): number {
+    this.logger.log('add method has been called');
+    return num1 + num2;
+  }
+
+  // Method to subtract the second number from the first
+  subtract(num1: number, num2: number): number {
+    this.logger.log('subtract method has been called');
+    return num1 - num2;
+  }
+}
+```
+
+**calculator.service.spec.ts**
+
+```TS
+import { CalculatorService } from './calculator.service';
+import { LoggerService } from './logger.service';
+
+describe('CalculatorService', () => {
+  it('should add two numbers', () => {
+    const calculatorService = new CalculatorService(new LoggerService());
+    const result = calculatorService.add(5, 3);
+    expect(result).toBe(8);
+  });
+
+  it('should subtract two numbers', () => {
+    const calculatorService = new CalculatorService(new LoggerService());
+    const result = calculatorService.subtract(10, 4);
+    expect(result).toBe(6);
+  });
+});
+```
+
+
