@@ -300,11 +300,12 @@ describe('CalculatorService', () => {
   });
 });
 ```
-#### The Anatomy of Our First Test
+
+### The Anatomy of Our First Test
 
 In Jasmine, describe and it are functions used for structuring and organizing test suites.
 
-##### describe:
+#### describe:
 
 **Purpose:** It is used to group related test specs (individual test cases) together, creating a test suite.
 
@@ -335,3 +336,57 @@ it('should add two numbers', () => {
 ```
 
 Note: It's good practice to have a single expectation per it block to keep tests focused and easy to understand.
+
+### The Phases of Our First Test
+
+In a test, the setup phase gets everything ready, the execution phase puts the specific behavior to the test, and the assertion phase checks if the results match what's expected. It's like preparing, performing, and checking in a neat sequence to ensure the code does what it's supposed to do.
+
+**Test We'll Be Using**
+
+```TS
+it('should add two numbers', () => {
+    const calculatorService = new CalculatorService(new LoggerService());
+    const result = calculatorService.add(5, 3);
+    expect(result).toBe(8);
+});
+```
+
+#### Setup Phase
+
+The Setup Phase is where we prepare the necessary components and dependencies for the test. In this case, we are creating an instance of CalculatorService and providing it with a LoggerService. This ensures that the service has the required dependencies to perform the test.
+
+```TS
+it('should add two numbers', () => {
+    const calculatorService = new CalculatorService(new LoggerService());
+});
+```
+
+#### The Execution Phase
+
+The Execution Phase involves the actual execution of the functionality being tested. Here, we call the add method on the calculatorService instance with the numbers 5 and 3. This phase is where we trigger the specific behavior we want to test.
+
+```
+it('should add two numbers', () => {
+    const calculatorService = new CalculatorService(new LoggerService());
+    //Execution
+    const result = calculatorService.add(5, 3);
+});
+```
+
+#### The Assertion Phase
+
+The Assertion Phase is where we verify that the executed functionality behaves as expected. We use the expect statement to make assertions about the value returned from the add method. In this case, we expect the result to be 8.
+
+```TS
+it('should add two numbers', () => {
+    const calculatorService = new CalculatorService(new LoggerService());
+    const result = calculatorService.add(5, 3);
+    //Assertion
+    expect(result).toBe(8);
+});
+```
+
+
+
+
+
