@@ -93,6 +93,20 @@ Simultaneously, the prescribed coverage range ensures a baseline of testing, esp
 
 ### Testing Methodology/Workflow
 
+Testing workflows and methodologies dictate when tests are written during the development process. For simplicity, we'll categorize this into three sections: testing before code implementation (TDD), testing while writing code (BDD), and testing after code has been written (PDT).
+
+#### Writing Tests Before Code Implementation With TDD
+
+Test-Driven Development (TDD) falls into this category, where tests are written before the actual code implementation. The idea is to define the expected behavior first and then write code to fulfill those expectations.
+
+#### Writing Tests While Implementing Code With BDD
+
+Behavior-Driven Development (BDD) is a testing methodology where tests are written concurrently with code development. In BDD, the focus is on describing the expected behavior of the software using natural language specifications, often expressed in "Given-When-Then" syntax. This approach encourages collaboration between developers, QA, and non-technical stakeholders, fostering a shared understanding of the software's functionality. BDD aligns testing with the ongoing development process, allowing for continuous validation of expected behaviors as the code evolves.
+
+#### Writing Tests After Code Has Been Written With Post-Development Testing or Post-Implementation Testing
+
+Post-Development Testing or Post-Implementation Testing is when tests are created after the code has been implemented. This is more common in traditional development processes or when testing is a separate phase following code implementation.
+
 **Disclaimer** 
 
 The amount of software testing that can be introduced into codebase can also be based on person prefrence of a developer or team with no rhyme or reason to their decisions other than they like testing or hate it. 
