@@ -385,8 +385,59 @@ it('should add two numbers', () => {
     expect(result).toBe(8);
 });
 ```
+### Using Spys For Enhanced Isolation
 
+Isolation in unit tests is crucial to validate the specific behavior of a single unit (in this case, the CalculatorService) without being affected by the functionality or behavior of its dependencies (like the LoggerService). Spies facilitate this isolation by creating mock instances of dependencies.
 
+Going back to our old code:
+
+```TS
+it('should add two numbers', () => {
+    const calculatorService = new CalculatorService(new LoggerService());
+    const result = calculatorService.add(5, 3);
+    expect(result).toBe(8);
+});
+```
+In this case, the test is creating a real instance of CalculatorService along with a real LoggerService. This test is more integrated and less isolated as it relies on the actual implementation of LoggerService. It ensures that the add method returns the expected result but doesn't verify any interaction or behavior of the LoggerService itself.
+
+#### What is a spy?
+
+A spy in testing is a function or an object that allows us to observe, track, and control how certain functions, methods, or objects are being used within our tests. It helps in verifying that specific functions or methods are called, how many times they are called, with which arguments, and even allows us to mock their behavior. In essence, spies provide a way to monitor and manage the interactions between different parts of our code during testing, aiding in verifying the expected behavior and usage of components without affecting their actual functionality.
+
+#### Importance of using a spy
+
+Using a spy creates a mock LoggerService instance, allowing for better isolation of the CalculatorService under test. This test not only verifies the functionality of the add method but also checks the interaction between CalculatorService and LoggerService. It ensures that the add method triggers the log method on the LoggerService with a specific message, providing a more comprehensive test by verifying both behavior and interaction.
+
+```TS
+it('should add two numbers', () => {
+    const loggerService = jasmine.createSpyObj('LoggerService', ['log']);
+    const calculatorService = new CalculatorService(loggerService);
+    const result = calculatorService.add(5, 3);
+    // Assertion
+    expect(result).toBe(8);
+    expect(loggerService.log).toHaveBeenCalledWith('add method has been called');
+});
+```
+
+In the example above we remove:
+
+```TS
+const calculatorService = new CalculatorService(new LoggerService());
+```
+
+And create a SPY to further issolate our code:
+
+```TS
+const loggerService = jasmine.createSpyObj('LoggerService', ['log']);
+```
+
+#### Why use a SPY?
+
+**Isolation of Testing:** Spies allow us to create mock instances of dependencies, such as the LoggerService, ensuring that the test focuses only on the behavior of the CalculatorService and not its dependencies. This isolates the testing scenario, making it more specific and less prone to interference from external factors.
+
+**Controlled Behavior:** By creating a spy, we can monitor and track method calls, ensuring that the methods are invoked as expected. In this case, we can verify if the log method of the LoggerService is called with the appropriate message, adding an extra assertion to validate the interaction between services.
+
+**Avoiding Real Service Calls:** Using a spy prevents actual calls to the real LoggerService methods. This is beneficial in testing to avoid unwanted side effects, such as logging to the console or triggering actions in real services, which might not be desirable or necessary in unit tests.
 
 
 
