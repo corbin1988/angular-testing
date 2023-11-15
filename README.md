@@ -439,5 +439,54 @@ const loggerService = jasmine.createSpyObj('LoggerService', ['log']);
 
 **Avoiding Real Service Calls:** Using a spy prevents actual calls to the real LoggerService methods. This is beneficial in testing to avoid unwanted side effects, such as logging to the console or triggering actions in real services, which might not be desirable or necessary in unit tests.
 
+### Using `beforeEach` For Setup
 
+In our last example we were repeating the setup phase to create a logger spy in each test (See code comment):
 
+```TS
+import { CalculatorService } from './calculator.service';
+import { LoggerService } from './logger.service';
+
+describe('CalculatorService', () => {
+  it('should add two numbers', () => {
+    //Setup phase
+    const loggerService = jasmine.createSpyObj('LoggerService', ['log']);
+    const calculatorService = new CalculatorService(loggerService);
+    const result = calculatorService.add(5, 3);
+    expect(result).toBe(8);
+  });
+
+  it('should subtract two numbers', () => {
+    //Setup phase
+    const loggerService = jasmine.createSpyObj('LoggerService', ['log']);
+    const calculatorService = new CalculatorService(loggerService);
+    const result = calculatorService.subtract(10, 4);
+    expect(result).toBe(6);
+  });
+});
+```
+
+Instead of reproducing the logger service spy we can instantiate it once in the `beforeEach` method. The beforeEach method does exactly as described. It executes test setup beforeEach test. 
+
+```TS
+describe('CalculatorService', () => {
+    let calculatorService: CalculatorService;
+
+    beforeEach(() => {
+        // Perform setup actions before each test
+        calculatorService = new CalculatorService(new LoggerService());
+    });
+
+    it('should add two numbers', () => {
+        // Test adding functionality
+        const result = calculatorService.add(5, 3);
+        expect(result).toBe(8);
+    });
+
+    it('should subtract two numbers', () => {
+        // Test subtraction functionality
+        const result = calculatorService.subtract(10, 4);
+        expect(result).toBe(6);
+    });
+});
+```
