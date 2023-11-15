@@ -469,24 +469,28 @@ describe('CalculatorService', () => {
 Instead of reproducing the logger service spy we can instantiate it once in the `beforeEach` method. The beforeEach method does exactly as described. It executes test setup beforeEach test. 
 
 ```TS
+import { CalculatorService } from './calculator.service';
+import { LoggerService } from './logger.service';
+
 describe('CalculatorService', () => {
     let calculatorService: CalculatorService;
+    let loggerService: jasmine.SpyObj<LoggerService>;
 
     beforeEach(() => {
-        // Perform setup actions before each test
-        calculatorService = new CalculatorService(new LoggerService());
+        loggerService = jasmine.createSpyObj('LoggerService', ['log']);
+        calculatorService = new CalculatorService(loggerService);
     });
 
     it('should add two numbers', () => {
-        // Test adding functionality
         const result = calculatorService.add(5, 3);
         expect(result).toBe(8);
     });
 
     it('should subtract two numbers', () => {
-        // Test subtraction functionality
         const result = calculatorService.subtract(10, 4);
         expect(result).toBe(6);
     });
 });
+```
+
 ```
