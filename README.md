@@ -2,8 +2,6 @@
 
 ## Table of Contents
 
-
-
 - [Introduction](#introduction)
   - [Bug Detection and Prevention](#bug-detection-and-prevention)
   - [Enhances Software Quality](#enhances-software-quality)
@@ -783,3 +781,41 @@ Test Validation:
 - **Expected Behaviors:** Mock data helps define expected behaviors. By comparing actual results with predefined mock data, tests verify that the service or component behaves as expected in response to specific input or scenarios.
 Speed and Efficiency:
 - **Avoiding External Dependencies:** Mocking data removes the need to interact with actual external systems (like APIs or databases) during testing, speeding up test execution and avoiding potential side effects or disruptions caused by real-world data changes.
+
+#### HTTP Assertions
+
+##### Test: should be created
+- **Assertion:** `expect(courseService).toBeTruthy();`
+- **Explanation:** Ensures that the CourseService instance is successfully created and is truthy, validating its existence and initialization.
+
+##### Test: should retrieve a course by ID
+- **Assertions:**
+  - `expect(course).toEqual(mockCourse);`
+  - `expect(req.request.method).toBe('GET');`
+- **Explanation:**
+  - Validates that the retrieved course matches the expected mockCourse data.
+  - Verifies that the HTTP request made for retrieving a specific course uses the 'GET' method.
+
+##### Test: should retrieve all courses
+- **Assertions:**
+  - `expect(courses).toEqual(mockCourses);`
+  - `expect(req.request.method).toBe('GET');`
+- **Explanation:**
+  - Ensures that the received courses match the expected mockCourses.
+  - Verifies that the HTTP request made for retrieving all courses uses the 'GET' method.
+
+##### Test: should save a course
+- **Assertions:**
+  - `expect(response).toBeTruthy();`
+  - `expect(req.request.method).toBe('PUT');`
+- **Explanation:**
+  - Expects a truthy response assuming a successful API call when saving a course.
+  - Validates that the HTTP request made for updating a course uses the 'PUT' method.
+
+##### Test: should retrieve lessons for a course
+- **Assertions:**
+  - `expect(lessons).toEqual(mockLessons);`
+  - `expect(req.request.method).toBe('GET');`
+- **Explanation:**
+  - Ensures that the received lessons match the expected mockLessons.
+  - Verifies that the HTTP request made for retrieving lessons for a specific course uses the 'GET' method.
