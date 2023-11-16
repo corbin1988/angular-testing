@@ -604,3 +604,157 @@ describe('CalculatorService', () => {
 
 The `TestBed`, by setting up the testing environment, allows for the simulation of an Angular module, providing the necessary dependencies for testing components, services, and other Angular entities in an isolated manner. This setup facilitates effective unit testing by creating controlled environments for testing Angular elements.
 
+### Testing An HTTP Services
+
+For this example we will use this courses service that makes specific requests. This CourseService uses Angular's HttpClient to make HTTP requests to various endpoints:
+
+findCourseById: Retrieves a specific course by its courseId.
+findAllCourses: Retrieves all courses.
+saveCourse: Saves changes to a course identified by courseId.
+findLessons: Retrieves lessons for a specific course based on courseId and pageNumber.
+
+```TS
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CourseService {
+  private baseURL = 'https://your-api-base-url.com'; // Replace with your API base URL
+
+  constructor(private http: HttpClient) {}
+
+  findCourseById(courseId: number): Observable<any> {
+    return this.http.get(`${this.baseURL}/courses/${courseId}`);
+  }
+
+  findAllCourses(): Observable<any> {
+    return this.http.get(`${this.baseURL}/courses`);
+  }
+
+  saveCourse(courseId: number, changes: any): Observable<any> {
+    return this.http.put(`${this.baseURL}/courses/${courseId}`, changes);
+  }
+
+  findLessons(courseId: number, pageNumber: number): Observable<any> {
+    return this.http.get(`${this.baseURL}/courses/${courseId}/lessons?page=${pageNumber}`);
+  }
+}
+```
+
+#### The Test
+
+This set of tests validates the functionality of the CourseService methods by mocking HTTP requests and ensuring that the service interacts correctly with the HttpClient. It covers the scenarios of retrieving courses by ID and all courses, saving a course, and retrieving lessons for a particular course. Adjust the mock data and expectations based on your actual API responses and requirements.
+
+```TS
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { CourseService } from './course.service';
+
+describe('CourseService', () => {
+  let courseService: CourseService;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [CourseService]
+    });
+
+    courseService = TestBed.inject(CourseService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() => {
+    httpTestingController.verify();
+  });
+
+  it('should be created', () => {
+    expect(courseService).toBeTruthy();
+  });
+
+  it('should retrieve a course by ID', () => {
+    const courseId = 1;
+    const mockCourse = { id: 1, title: 'Test Course' };
+
+    courseService.findCourseById(courseId).subscribe(course => {
+      expect(course).toEqual(mockCourse);
+    });
+
+    const req = httpTestingController.expectOne(`${courseService.baseURL}/courses/${courseId}`);
+    expect(req.request.method).toBe('GET');
+
+    req.flush(mockCourse);
+  });
+
+  it('should retrieve all courses', () => {
+    const mockCourses = [{ id: 1, title: 'Course 1' }, { id: 2, title: 'Course 2' }];
+
+    courseService.findAllCourses().subscribe(courses => {
+      expect(courses).toEqual(mockCourses);
+    });
+
+    const req = httpTestingController.expectOne(`${courseService.baseURL}/courses`);
+    expect(req.request.method).toBe('GET');
+
+    req.flush(mockCourses);
+  });
+
+  it('should save a course', () => {
+    const courseId = 1;
+    const changes = { title: 'Updated Course Title' };
+
+    courseService.saveCourse(courseId, changes).subscribe(response => {
+      expect(response).toBeTruthy(); // Assuming your API returns a truthy response on success
+    });
+
+    const req = httpTestingController.expectOne(`${courseService.baseURL}/courses/${courseId}`);
+    expect(req.request.method).toBe('PUT');
+
+    req.flush({});
+  });
+
+  it('should retrieve lessons for a course', () => {
+    const courseId = 1;
+    const pageNumber = 1;
+    const mockLessons = [{ id: 1, title: 'Lesson 1' }, { id: 2, title: 'Lesson 2' }];
+
+    courseService.findLessons(courseId, pageNumber).subscribe(lessons => {
+      expect(lessons).toEqual(mockLessons);
+    });
+
+    const req = httpTestingController.expectOne(`${courseService.baseURL}/courses/${courseId}/lessons?page=${pageNumber}`);
+    expect(req.request.method).toBe('GET');
+
+    req.flush(mockLessons);
+  });
+});
+```
+
+#### The Anatomy of Our HTTP Test
+
+#### Setup
+
+We first start with setting up each test with `beforeEach`
+
+```TS
+let courseService: CourseService;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [CourseService]
+    });
+
+    courseService = TestBed.inject(CourseService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
+```
+
+- The `beforeEach` function is used to set up a clean and controlled testing environment before each test.
+- `HttpClientTestingModule` provides tools and utilities for testing code that utilizes the `HttpClient`, including the `HttpTestingController`, which helps mock HTTP requests and test their behavior without sending actual requests to the server.
+
+
