@@ -555,4 +555,52 @@ beforeEach(() => {
 });
 ```
 
+### Angular TestBed
+
+The Angular TestBed is a powerful utility that allows you to configure and create an Angular testing module for your unit tests. It provides an environment for testing Angular components, services, and other parts of your application. Here's how you can modify the test to use the TestBed:
+
+```TS
+import { TestBed } from '@angular/core/testing';
+import { CalculatorService } from './calculator.service';
+import { LoggerService } from './logger.service';
+
+describe('CalculatorService', () => {
+    let calculatorService: CalculatorService;
+    let loggerService: jasmine.SpyObj<LoggerService>;
+
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [
+                CalculatorService,
+                {
+                    provide: LoggerService,
+                    useValue: jasmine.createSpyObj('LoggerService', ['log']),
+                },
+            ],
+        });
+        
+        calculatorService = TestBed.inject(CalculatorService);
+        loggerService = TestBed.inject(LoggerService) as jasmine.SpyObj<LoggerService>;
+    });
+
+    it('should add two numbers', () => {
+        const result = calculatorService.add(5, 3);
+        expect(result).toBe(8);
+    });
+
+    it('should subtract two numbers', () => {
+        const result = calculatorService.subtract(10, 4);
+        expect(result).toBe(6);
+    });
+});
+```
+
+#### Explanation:
+
+- `TestBed.configureTestingModule` is used to set up an Angular testing module, mimicking an Angular module configuration.
+- Inside `configureTestingModule`, providers are specified using the `providers` array. Here, `CalculatorService` is provided as well as a mocked `LoggerService` created using `jasmine.createSpyObj`.
+- `TestBed.inject` is used to retrieve instances of services within the testing module. `calculatorService` and `loggerService` are obtained using `TestBed.inject`.
+- The tests then use these injected instances to test the functionality of `CalculatorService`.
+
+The `TestBed`, by setting up the testing environment, allows for the simulation of an Angular module, providing the necessary dependencies for testing components, services, and other Angular entities in an isolated manner. This setup facilitates effective unit testing by creating controlled environments for testing Angular elements.
 
