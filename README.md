@@ -757,4 +757,14 @@ let courseService: CourseService;
 - The `beforeEach` function is used to set up a clean and controlled testing environment before each test.
 - `HttpClientTestingModule` provides tools and utilities for testing code that utilizes the `HttpClient`, including the `HttpTestingController`, which helps mock HTTP requests and test their behavior without sending actual requests to the server.
 
+#### Teardown
 
+The `afterEach` block in Jasmine is used for cleanup and verification after each individual test within the test suite has executed. In this specific context:
+
+```TS
+afterEach(() => { httpTestingController.verify(); });
+```
+
+- The afterEach block ensures that any remaining or unhandled HTTP requests made during the test have been explicitly verified and handled using httpTestingController.verify().
+
+- This verification is crucial in unit testing HTTP interactions to avoid any unexpected outstanding HTTP requests that might affect subsequent tests or lead to false positives/negatives in the test outcomes.
