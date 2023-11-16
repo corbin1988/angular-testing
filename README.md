@@ -768,3 +768,18 @@ afterEach(() => { httpTestingController.verify(); });
 - The afterEach block ensures that any remaining or unhandled HTTP requests made during the test have been explicitly verified and handled using httpTestingController.verify().
 
 - This verification is crucial in unit testing HTTP interactions to avoid any unexpected outstanding HTTP requests that might affect subsequent tests or lead to false positives/negatives in the test outcomes.
+
+#### Mock Data
+
+In each test you'll notice mock data:
+
+`const mockCourses = [{ id: 1, title: 'Course 1' }, { id: 2, title: 'Course 2' }];`
+
+Using mock data in tests serves several crucial purposes:
+
+- **Predictable Testing Environment:** Isolation from External Factors: Mock data allows tests to run independently of external dependencies, such as databases or APIs. It ensures that tests focus solely on the functionality being tested within the service or component without relying on external systems.
+- **Controlled Test Scenarios:** Reproducibility: Using predefined mock data ensures that tests produce consistent and reproducible results. Tests can rely on a known dataset, preventing variability in test outcomes.
+Test Validation:
+- **Expected Behaviors:** Mock data helps define expected behaviors. By comparing actual results with predefined mock data, tests verify that the service or component behaves as expected in response to specific input or scenarios.
+Speed and Efficiency:
+- **Avoiding External Dependencies:** Mocking data removes the need to interact with actual external systems (like APIs or databases) during testing, speeding up test execution and avoiding potential side effects or disruptions caused by real-world data changes.
