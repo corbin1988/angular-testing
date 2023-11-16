@@ -493,4 +493,66 @@ describe('CalculatorService', () => {
 });
 ```
 
+### A Note About Dependency Injection And Testing
+
+In calculator `calculator.service.ts` we are injecting the LoggerService into the Calculator via the constructor. We will rarely see code like this:
+
+```TS
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CalculatorService {
+  private logger: LoggerService = new LoggerService(); // Instantiate LoggerService
+
+  // Method to add two numbers
+  add(num1: number, num2: number): number {
+    this.logger.log('add method has been called');
+    return num1 + num2;
+  }
+
+  // Method to subtract the second number from the first
+  subtract(num1: number, num2: number): number {
+    this.logger.log('subtract method has been called');
+    return num1 - num2;
+  }
+}
 ```
+
+One of the reasons we inject into the construct like the beneath code is for testability:
+
+```TS
+import { Injectable } from '@angular/core';
+import { LoggerService } from './logger.service';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CalculatorService {
+  // Inject the LoggerService in the constructor
+  constructor(private logger: LoggerService) {}
+
+  // Method to add two numbers
+  add(num1: number, num2: number): number {
+    this.logger.log('add method has been called');
+    return num1 + num2;
+  }
+
+  // Method to subtract the second number from the first
+  subtract(num1: number, num2: number): number {
+    this.logger.log('subtract method has been called');
+    return num1 - num2;
+  }
+}
+```
+This allows us to easily inject our LoggerService into the CalculatorService for testing:
+
+```TS
+beforeEach(() => {
+  loggerService = jasmine.createSpyObj('LoggerService', ['log']);
+  calculatorService = new CalculatorService(loggerService);
+});
+```
+
+
